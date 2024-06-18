@@ -1,0 +1,38 @@
+import pandas as pd
+from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_score
+
+# Sample data (replace with your data)
+data = {
+    "Genre": ["Fiction", "Non-Fiction", "Science Fiction", "Fantasy", "Mystery", "Biography", "History", "Romance"],
+    "Avg_Rating": [4.2, 3.8, 4.5, 4.3, 4.0, 4.8, 4.2, 3.9],
+    "Num_Pages": [350, 280, 520, 480, 320, 410, 380, 350]
+}
+
+df = pd.DataFrame(data)
+
+# Define number of clusters (experiment with different values)
+k = 3
+
+# Create and fit the KMeans model
+kmeans = KMeans(n_clusters=k, random_state=0)
+kmeans.fit(df[["Avg_Rating", "Num_Pages"]])
+
+# Assign cluster labels
+df["Cluster"] = kmeans.labels_
+
+# Calculate silhouette score
+silhouette_score = silhouette_score(df[["Avg_Rating", "Num_Pages"]], df["Cluster"])
+
+print("Silhouette Score:", silhouette_score)
+
+# Optional: Visualize with libraries like matplotlib (not included here)
+# Import libraries for visualization (e.g., matplotlib)
+import matplotlib.pyplot as plt
+
+# Scatter plot with color representing cluster
+plt.scatter(df["Avg_Rating"], df["Num_Pages"], c=df["Cluster"])
+plt.xlabel("Average Rating")
+plt.ylabel("Number of Pages")
+plt.title("K-Means Clustering")
+plt.show()
