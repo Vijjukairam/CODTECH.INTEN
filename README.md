@@ -1,6 +1,9 @@
-COMPANY ; CODTECH IT SOLUTIONS
-MENTOR : G.SRAVANI
-DOMIAN : DATA SCIENCE
+COMPANY ; CODTECH IT SOLUTIONS                                                                                                      
+
+MENTOR : G.SRAVANI                                                                                                                   
+
+DOMIAN : DATA SCIENCE                                                                                                         
+
 DURATION  : 20TH MAY TO JUNE 20TH
 
 LIBRARIES
